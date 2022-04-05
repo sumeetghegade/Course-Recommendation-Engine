@@ -1,0 +1,131 @@
+//Create a Teacher node
+CREATE (alexandraChakarov:Faculty {name: 'Alexandra Chakarov', id: 6984, password: 4896})
+CREATE (chungwenTsao:Faculty {name: 'Chung-Wen Tsao', id: 9854, password: 4589})
+CREATE (davidTaylor:Faculty {name: 'David Taylor', id: 0001, password: 9987})
+CREATE (katerinaPotika:Faculty {name: 'Katerina Potika', id: 2378, password: 1938})
+CREATE (navratiSaxena:Faculty {name: 'Navrati Saxena', id: 1290, password: 4294})
+CREATE (nadaAttar:Faculty {name: 'Nada Attar', id: 1092, password: 2901})
+
+
+
+
+//Create a Domain node
+CREATE (dataStructures:Domain {topic: 'Data Structures'})
+CREATE (pythonProgramming Domain {topic: 'Python Programming'})
+CREATE (discreteMathematics Domain {topic: 'Discrete Mathematics'})
+CREATE (Domain {topic: ''})
+CREATE (Domain {topic: ''})
+CREATE (Domain {topic: ''})
+CREATE (Domain {topic: ''})
+CREATE (Domain {topic: ''})
+CREATE (Domain {topic: ''})
+CREATE (Domain {topic: ''})
+CREATE (Domain {topic: ''})
+CREATE (Domain {topic: ''})
+CREATE (Domain {topic: ''})
+CREATE (Domain {topic: ''})
+CREATE (Domain {topic: ''})
+CREATE (Domain {topic: ''})
+CREATE (Domain {topic: ''})
+CREATE (Domain {topic: ''})
+CREATE (Domain {topic: ''})
+CREATE (Domain {topic: ''})
+CREATE (Domain {topic: ''})
+CREATE (Domain {topic: ''})
+CREATE (Domain {topic: ''})
+CREATE (Domain {topic: ''})
+CREATE (Domain {topic: ''})
+CREATE (Domain {topic: ''})
+CREATE (Domain {topic: ''})
+CREATE (Domain {topic: ''})
+
+
+
+
+//Create a Course node
+CREATE (cs22a:Course {course_id: 'CS 22A', course_name: 'Python Programming for Non Majors I'})
+CREATE (cs22b:Course {course_id: 'CS 22B', course_name: 'Python Programming for Non Majors II'})
+CREATE (cs25:Course {course_id: 'CS 25', course_name: 'The Digital World and Society'})
+CREATE (cs40:Course {course_id: 'CS 40', course_name: 'Introduction to Computers'})
+CREATE (cs42:Course {course_id: 'CS 42', course_name: 'Discrete Mathematics'})
+CREATE (cs42X:Course {course_id: 'CS 42X', course_name: 'Discrete Mathematics'})
+CREATE (cs46A:Course {course_id: 'CS 46A', course_name: 'Introduction to Programming'})
+CREATE (cs46b:Course {course_id: 'CS 46B', course_name: 'Introduction to Data Structures'})
+CREATE (cs47:Course {course_id: 'CS 47', course_name: 'Introduction to Computer Systems'})
+CREATE (cs49c:Course {course_id: 'CS 49C', course_name: 'Programming in C'})
+CREATE (cs49j:Course {course_id: 'CS 49J', course_name: 'Programming in Java'})
+CREATE (cs50:Course {course_id: 'CS 50', course_name: 'Scientific Computing I'})
+CREATE (cs85c:Course {course_id: 'CS 85C', course_name: 'Practical Computing Topics'})
+CREATE (cs92:Course {course_id: 'CS 92', course_name: 'International Program Studies'})
+CREATE (cs100w:Course {course_id: 'CS 100W', course_name: 'Technical Writing Workshop'})
+CREATE (cs108:Course {course_id: 'CS 108', course_name: 'Introduction to Game Studies'})
+CREATE (cs116a:Course {course_id: 'CS 116A', course_name: 'Introduction to Computer Graphics'})
+CREATE (cs116b:Course {course_id: 'CS 116B', course_name: 'Computer Graphics Algorithms'})
+CREATE (cs122:Course {course_id: 'CS 122', course_name: 'Advanced Programming with Python'})
+CREATE (cs123a:Course {course_id: 'CS 123A', course_name: 'Bioinformatics I'})
+CREATE (cs123b:Course {course_id: 'CS 123B', course_name: 'Bioinformatics II'})
+CREATE (cs134:Course {course_id: 'CS 134', course_name: 'Computer Game Design and Programming'})
+CREATE (cs136:Course {course_id: 'CS 136', course_name: 'Introduction to Computer Vision'})
+CREATE (cs143c:Course {course_id: 'CS 143C', course_name: 'Numerical Analysis and Scientific Computing'})
+CREATE (cs143m:Course {course_id: 'CS 143M', course_name: 'Numerical Analysis and Scientific Computing'})
+CREATE (cs144:Course {course_id: 'CS 144', course_name: 'Advanced C++ Programming'})
+CREATE (cs146:Course {course_id: 'CS 146', course_name: 'Data Structures and Algorithms'})
+CREATE (cs147:Course {course_id: 'CS 147', course_name: 'Computer Architecture'})
+CREATE (cs149:Course {course_id: 'CS 149', course_name: 'Operating Systems'})
+CREATE (cs151:Course {course_id: 'CS 151', course_name: 'Object-Oriented Design'})
+CREATE (cs152:Course {course_id: 'CS 152', course_name: 'Programming Paradigms'})
+CREATE (cs153:Course {course_id: 'CS 153', course_name: 'Concepts of Compiler Design'})
+CREATE (cs154:Course {course_id: 'CS 154', course_name: 'Formal Languages and Computability'})
+CREATE (cs155:Course {course_id: 'CS 155', course_name: 'Introduction to the Design and Analysis of Algorithms'})
+CREATE (cs156:Course {course_id: 'CS 156', course_name: 'Introduction to Artificial Intelligence'})
+CREATE (cs157a:Course {course_id: 'CS 157A', course_name: 'Introduction to Database Management Systems'})
+CREATE (cs157b:Course {course_id: 'CS 157B', course_name: 'Database Management Systems II'})
+CREATE (cs157c:Course {course_id: 'CS 157C', course_name: 'NoSQL Database Systems'})
+CREATE (cs158a:Course {course_id: 'CS 158A', course_name: 'Computer Networks'})
+CREATE (cs158b:Course {course_id: 'CS 158B', course_name: 'Computer Network Management'})
+CREATE (cs159:Course {course_id: 'CS 159', course_name: 'Introduction to Parallel Processing'})
+CREATE (cs160:Course {course_id: 'CS 160', course_name: 'Software Engineering'})
+CREATE (cs161:Course {course_id: 'CS 161', course_name: 'Software Project'})
+CREATE (cs166:Course {course_id: 'CS 166', course_name: 'Information Security'})
+CREATE (cs168:Course {course_id: 'CS 168', course_name: 'Blockchain and Cryptocurrencies'})
+CREATE (cs171:Course {course_id: 'CS 171', course_name: 'Introduction to Machine Learning'})
+CREATE (cs174:Course {course_id: 'CS 174', course_name: 'Server-side Web Programming'})
+CREATE (cs175:Course {course_id: 'CS 175', course_name: 'Mobile Device Development'})
+CREATE (cs176:Course {course_id: 'CS 176', course_name: 'Introduction to Social Network Analysis'})
+CREATE (cs180:Course {course_id: 'CS 180', course_name: 'Individual Studies'})
+CREATE (cs180h:Course {course_id: 'CS 180H', course_name: 'Individual Studies for Honors'})
+CREATE (cs185c:Course {course_id: 'CS 185C', course_name: 'Advanced Practical Computing Topics'})
+CREATE (cs190:Course {course_id: 'CS 190', course_name: 'Internship Project'})
+CREATE (cs190i:Course {course_id: 'CS 190I', course_name: 'Internship Project'})
+CREATE (cs192:Course {course_id: 'CS 192', course_name: 'International Program Studies'})
+
+
+
+
+
+//Create a relationship between a Student node and a Domain node
+MATCH (a:Student), (b:Domain) WHERE a.name = 'T.K. Bui' AND b.topic = 'Data Structures' CREATE (a)-[:INTERESTED_IN]->(b)
+
+
+
+
+//Create a relationship between a Student node and a Faculty node
+MATCH (a:Student), (b:Faculty) WHERE a.name = 'T.K. Bui' AND b.name = 'Katerina Potika' CREATE (a)-[:IS_COVERED_BY]->(b)
+
+
+//Create relationships between a Domain node and a Course node
+MATCH (a:Domain), (b:Course) WHERE a.topic = 'Data Structures' AND b.course_id = 'CS 46B' CREATE (a)-[:IS_COVERED_BY]->(b)
+MATCH (a:Domain), (b:Course) WHERE a.topic = 'Data Structures' AND b.course_id = 'CS 146' CREATE (a)-[:IS_COVERED_BY]->(b)
+
+
+
+
+
+
+//Create relationships between a Faculty node and a Course node
+MATCH (a:Faculty), (b:Course) WHERE a.name = 'Alexandra Chakarov' AND b.course_id = 'CS 46B' CREATE (a)-[:TEACHES]->(b)
+MATCH (a:Faculty), (b:Course) WHERE a.name = 'Chung-Wen Tsao' AND b.course_id = 'CS 46B' CREATE (a)-[:TEACHES]->(b)
+MATCH (a:Faculty), (b:Course) WHERE a.name = 'David Taylor' AND b.course_id = 'CS 146' CREATE (a)-[:TEACHES]->(b)
+MATCH (a:Faculty), (b:Course) WHERE a.name = 'Katerina Potika' AND b.course_id = 'CS 146' CREATE (a)-[:TEACHES]->(b)
+MATCH (a:Faculty), (b:Course) WHERE a.name = 'Navrati Saxena' AND b.course_id = 'CS 146' CREATE (a)-[:TEACHES]->(b)
+MATCH (a:Faculty), (b:Course) WHERE a.name = 'Nada Attar' AND b.course_id = 'CS 146' CREATE (a)-[:TEACHES]->(b)
