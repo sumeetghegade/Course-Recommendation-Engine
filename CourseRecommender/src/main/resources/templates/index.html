@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SJSU Course Recommender</title>
+    <h1>Will need to add buttons directing to login and sign up pages.</h1>
+</head>
+<body>
+
+    <form>
+
+        <!-- button to lead to sign up page -->
+        <button type="button">Sign Up</button><br>
+
+        <!-- button to lead to login page -->
+        <button type="button" id="login">Login</button><br>
+        <p id="test">Test button</p>
+
+        <!-- https://stackoverflow.com/questions/16562577/how-can-i-make-a-button-redirect-my-page-to-another-page -->
+        <script>
+            document.getElementById("login").onClick = function () {
+                location.href="localhost:8080/login";
+                document.getElementById("test").innerHTML = "Login button clicked.";
+            };
+        </script>
+
+    </form>
+</body>
+</html>
