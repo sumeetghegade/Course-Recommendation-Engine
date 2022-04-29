@@ -15,11 +15,16 @@ public class HomeController {
     @Autowired
     UserRepository repo;
 
+    // https://stackoverflow.com/questions/38221461/how-to-make-an-html-file-appear-on-localhost-with-spring-boot
+    @GetMapping("/")
+    public String homePage() {
+    	return "login";
+    }
+    
     @GetMapping("/login")
     public String login() {
         return "login";
     }
-
 
     @GetMapping("/home/{username}")
     public String home(@PathVariable(value = "username") String name) {
