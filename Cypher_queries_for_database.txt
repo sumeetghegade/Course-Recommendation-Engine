@@ -1,10 +1,8 @@
-//Delete all nodes
-MATCH (n) DETACH DELETE n;
+MATCH (n)
+DETACH DELETE n;
 
-//Create a Student node
 CREATE (tkBui:Student {name: 'T.K. Bui', id: 1111, password: 1234})
-
-
+ 
 //Create a Teacher node
 CREATE (alexandraChakarov:Faculty {name: 'Alexandra Chakarov', id: 6984, password: 4896})
 CREATE (chungwenTsao:Faculty {name: 'Chung-Wen Tsao', id: 9854, password: 4589})
@@ -12,10 +10,7 @@ CREATE (davidTaylor:Faculty {name: 'David Taylor', id: 0001, password: 9987})
 CREATE (katerinaPotika:Faculty {name: 'Katerina Potika', id: 2378, password: 1938})
 CREATE (navratiSaxena:Faculty {name: 'Navrati Saxena', id: 1290, password: 4294})
 CREATE (nadaAttar:Faculty {name: 'Nada Attar', id: 1092, password: 2901})
-
-
-
-
+ 
 //Create a Domain node
 CREATE (dataStructures:Domain {topic: 'Data Structures'})
 CREATE (pythonProgramming:Domain {topic: 'Python Programming'})
@@ -35,12 +30,9 @@ CREATE (informationSecurity:Domain {topic: 'Information Security'})
 CREATE (computerVision:Domain {topic: 'Computer Vision'})
 CREATE (blockchain:Domain {topic: 'Blockchain'})
 CREATE (machineLearning:Domain {topic: 'Machine Learning'})
-CREATE (mobileDeviceDevelopment:Domain {topic: 'Mobile Device Development'})
-
-
-
-
-
+CREATE (mobileDeviceDevelopment:Domain {topic: 'Mobile Device Development'});
+ 
+ 
 //Create a Course node
 CREATE (cs22a:Course {course_id: 'CS 22A', course_name: 'Python Programming for Non Majors I'})
 CREATE (cs22b:Course {course_id: 'CS 22B', course_name: 'Python Programming for Non Majors II'})
@@ -91,51 +83,85 @@ CREATE (cs171:Course {course_id: 'CS 171', course_name: 'Introduction to Machine
 CREATE (cs174:Course {course_id: 'CS 174', course_name: 'Server-side Web Programming'})
 CREATE (cs175:Course {course_id: 'CS 175', course_name: 'Mobile Device Development'})
 CREATE (cs176:Course {course_id: 'CS 176', course_name: 'Introduction to Social Network Analysis'})
-CREATE (cs180:Course {course_id: 'CS 180', course_name: 'Individual Studies'})
-CREATE (cs180h:Course {course_id: 'CS 180H', course_name: 'Individual Studies for Honors'})
-CREATE (cs185c:Course {course_id: 'CS 185C', course_name: 'Advanced Practical Computing Topics'})
-CREATE (cs190:Course {course_id: 'CS 190', course_name: 'Internship Project'})
-CREATE (cs190i:Course {course_id: 'CS 190I', course_name: 'Internship Project'})
-CREATE (cs192:Course {course_id: 'CS 192', course_name: 'International Program Studies'});
-
-
-
-
-
-//Create a relationship between a Student node and a Domain node
-MATCH (a:Student), (b:Domain) WHERE a.name = 'T.K. Bui' AND b.topic = 'Data Structures' CREATE (a)-[:INTERESTED_IN]->(b);
-
-
-
-
-//Create a relationship between a Student node and a Faculty node
-MATCH (a:Student), (b:Faculty) WHERE a.name = 'T.K. Bui' AND b.name = 'Katerina Potika' CREATE (a)-[:INTERESTED_IN]->(b);
-
-
-//Create relationships between a Domain node and a Course node
-MATCH (a:Domain), (b:Course) WHERE a.topic = 'Data Structures' AND b.course_id = 'CS 46B' CREATE (a)-[:IS_COVERED_BY]->(b);
-MATCH (a:Domain), (b:Course) WHERE a.topic = 'Data Structures' AND b.course_id = 'CS 146' CREATE (a)-[:IS_COVERED_BY]->(b);
-MATCH (a:Domain), (b:Course) WHERE a.topic = 'Python Programming' AND b.course_id = 'CS ' CREATE (a)-[:IS_COVERED_BY]->(b);
+ 
+ 
+//Create a Domain node
+CREATE (dataStructures:Domain {topic: 'Data Structures'})
+CREATE (pythonProgramming:Domain {topic: 'Python Programming'})
+CREATE (javaProgramming:Domain {topic: 'Java Programming'})
+CREATE (CProgramming:Domain {topic: 'C Programming'})
+CREATE (programmingParadigms:Domain {topic: 'Programming Paradigms'})
+CREATE (noSQL:Domain {topic:'NoSQL'})
+CREATE (computerNetworks:Domain {topic:'Computer Networks'})
+CREATE (parallelProcessing:Domain {topic:'Parallel Processing'})
+CREATE (softwareEngineering:Domain {topic:'Software Engineering'})
+CREATE (formalLanguages:Domain {topic:'Formal Languages'})
+CREATE (serverSideWebProgramming:Domain {topic:'Server-side Web Programming'})
+CREATE (socialNetworkAnalysis:Domain {topic:'Social Network Analysis'})
+CREATE (discreteMathematics:Domain {topic: 'Discrete Mathematics'})
+CREATE (computerSystems:Domain {topic: 'Computer Systems'})
+CREATE (gameStudies:Domain {topic: 'Game Studies'})
+CREATE (computerGraphics:Domain {topic: 'Computer Graphics'})
+CREATE (computing:Domain {topic: 'Computing'})
+CREATE (bioinformatics:Domain {topic: 'Bioinformatics'})
+CREATE (gameDesign:Domain {topic: 'Game Design'})
+CREATE (algorithms:Domain {topic: 'Algorithms'})
+CREATE (objectOrientedDesign:Domain {topic: 'Object-Oriented Design'})
+CREATE (compilerDesign:Domain {topic: 'Compiler Design'})
+CREATE (artificialIntelligence:Domain {topic: 'Artificial Intelligence'})
+CREATE (databaseManagementSystems:Domain {topic: 'Database Management Systems'})
+CREATE (informationSecurity:Domain {topic: 'Information Security'})
+CREATE (computerVision:Domain {topic: 'Computer Vision'})
+CREATE (blockchain:Domain {topic: 'Blockchain'})
+CREATE (machineLearning:Domain {topic: 'Machine Learning'})
+CREATE (mobileDeviceDevelopment:Domain {topic: 'Mobile Device Development'});
+MATCH (a:Domain), (b:Course) WHERE a.topic = 'Python Programming' AND b.course_id = 'CS 22A' CREATE (a)-[:IS_COVERED_BY]->(b);
+MATCH (a:Domain), (b:Course) WHERE a.topic = 'Python Programming' AND b.course_id = 'CS 22B' CREATE (a)-[:IS_COVERED_BY]->(b);
+//MATCH (a:Domain), (b:Course) WHERE a.topic = '' AND b.course_id = 'CS25' CREATE (a)-[:IS_COVERED_BY]->(b);
+//MATCH (a:Domain), (b:Course) WHERE a.topic = 'Computer Systems' AND b.course_id = 'CS 40' CREATE (a)-[:IS_COVERED_BY]->(b);
 MATCH (a:Domain), (b:Course) WHERE a.topic = 'Discrete Mathematics' AND b.course_id = 'CS 42' CREATE (a)-[:IS_COVERED_BY]->(b);
 MATCH (a:Domain), (b:Course) WHERE a.topic = 'Discrete Mathematics' AND b.course_id = 'CS 42X' CREATE (a)-[:IS_COVERED_BY]->(b);
+MATCH (a:Domain), (b:Course) WHERE a.topic = 'Java Programming' AND b.course_id = 'CS46A' CREATE (a)-[:IS_COVERED_BY]->(b);
+MATCH (a:Domain), (b:Course) WHERE a.topic = 'Data Structures' AND b.course_id = 'CS 46B' CREATE (a)-[:IS_COVERED_BY]->(b);
 MATCH (a:Domain), (b:Course) WHERE a.topic = 'Computer Systems' AND b.course_id = 'CS 47' CREATE (a)-[:IS_COVERED_BY]->(b);
+MATCH (a:Domain), (b:Course) WHERE a.topic = 'C Programming' AND b.course_id = 'CS 49C' CREATE (a)-[:IS_COVERED_BY]->(b);
+MATCH (a:Domain), (b:Course) WHERE a.topic = 'Java Programming' AND b.course_id = 'CS 49J' CREATE (a)-[:IS_COVERED_BY]->(b);
+MATCH (a:Domain), (b:Course) WHERE a.topic = 'Computing' AND b.course_id = 'CS 50' CREATE (a)-[:IS_COVERED_BY]->(b);
+MATCH (a:Domain), (b:Course) WHERE a.topic = 'Computing' AND b.course_id = 'CS 85C' CREATE (a)-[:IS_COVERED_BY]->(b);
+//MATCH (a:Domain), (b:Course) WHERE a.topic = '' AND b.course_id = 'CS 92' CREATE (a)-[:IS_COVERED_BY]->(b);
+//MATCH (a:Domain), (b:Course) WHERE a.topic = '' AND b.course_id = 'CS 100W' CREATE (a)-[:IS_COVERED_BY]->(b);
 MATCH (a:Domain), (b:Course) WHERE a.topic = 'Game Studies' AND b.course_id = 'CS 108' CREATE (a)-[:IS_COVERED_BY]->(b);
 MATCH (a:Domain), (b:Course) WHERE a.topic = 'Computer Graphics' AND b.course_id = 'CS ' CREATE (a)-[:IS_COVERED_BY]->(b);
-MATCH (a:Domain), (b:Course) WHERE a.topic = 'Computing' AND b.course_id = 'CS 50' CREATE (a)-[:IS_COVERED_BY]->(b);
 MATCH (a:Domain), (b:Course) WHERE a.topic = 'Bioinformatics' AND b.course_id = 'CS 123A' CREATE (a)-[:IS_COVERED_BY]->(b);
+MATCH (a:Domain), (b:Course) WHERE a.topic = 'Bioinformatics' AND b.course_id = 'CS 123B' CREATE (a)-[:IS_COVERED_BY]->(b);
 MATCH (a:Domain), (b:Course) WHERE a.topic = 'Game Design' AND b.course_id = 'CS 134' CREATE (a)-[:IS_COVERED_BY]->(b);
+MATCH (a:Domain), (b:Course) WHERE a.topic = 'Computer Vision' AND b.course_id = 'CS 136' CREATE (a)-[:IS_COVERED_BY]->(b);
+MATCH (a:Domain), (b:Course) WHERE a.topic = 'Computing' AND b.course_id = 'CS 143C' CREATE (a)-[:IS_COVERED_BY]->(b);
+MATCH (a:Domain), (b:Course) WHERE a.topic = 'Computing' AND b.course_id = 'CS 143M' CREATE (a)-[:IS_COVERED_BY]->(b);
+MATCH (a:Domain), (b:Course) WHERE a.topic = 'C Programming' AND b.course_id = 'CS 144' CREATE (a)-[:IS_COVERED_BY]->(b);
+ 
 MATCH (a:Domain), (b:Course) WHERE a.topic = 'Algorithms' AND b.course_id = 'CS 146' CREATE (a)-[:IS_COVERED_BY]->(b);
+MATCH (a:Domain), (b:Course) WHERE a.topic = 'Data Structures' AND b.course_id = 'CS 146' CREATE (a)-[:IS_COVERED_BY]->(b);
 MATCH (a:Domain), (b:Course) WHERE a.topic = 'Object-Oriented Design' AND b.course_id = 'CS 151' CREATE (a)-[:IS_COVERED_BY]->(b);
+MATCH (a:Domain), (b:Course) WHERE a.topic = 'Programming Paradigms' AND b.course_id = 'CS 152' CREATE (a)-[:IS_COVERED_BY]->(b);
 MATCH (a:Domain), (b:Course) WHERE a.topic = 'Compiler Design' AND b.course_id = 'CS 153' CREATE (a)-[:IS_COVERED_BY]->(b);
+MATCH (a:Domain), (b:Course) WHERE a.topic = 'Formal Languages' AND b.course_id = 'CS 154' CREATE (a)-[:IS_COVERED_BY]->(b);
+MATCH (a:Domain), (b:Course) WHERE a.topic = 'Algorithms' AND b.course_id = 'CS 155' CREATE (a)-[:IS_COVERED_BY]->(b);
 MATCH (a:Domain), (b:Course) WHERE a.topic = 'Artificial Intelligence' AND b.course_id = 'CS 156' CREATE (a)-[:IS_COVERED_BY]->(b);
 MATCH (a:Domain), (b:Course) WHERE a.topic = 'Database Management Systems' AND b.course_id = 'CS 157A' CREATE (a)-[:IS_COVERED_BY]->(b);
+MATCH (a:Domain), (b:Course) WHERE a.topic = 'Database Management Systems' AND b.course_id = 'CS 157B' CREATE (a)-[:IS_COVERED_BY]->(b);
+MATCH (a:Domain), (b:Course) WHERE a.topic = 'NoSQL' AND b.course_id = 'CS 157C' CREATE (a)-[:IS_COVERED_BY]->(b);
+MATCH (a:Domain), (b:Course) WHERE a.topic = 'Computer Networks' AND b.course_id = 'CS 158A' CREATE (a)-[:IS_COVERED_BY]->(b);
+MATCH (a:Domain), (b:Course) WHERE a.topic = 'Computer Networks' AND b.course_id = 'CS 158B' CREATE (a)-[:IS_COVERED_BY]->(b);
+MATCH (a:Domain), (b:Course) WHERE a.topic = 'Parallel Processing' AND b.course_id = 'CS 159' CREATE (a)-[:IS_COVERED_BY]->(b);
+MATCH (a:Domain), (b:Course) WHERE a.topic = 'Software Engineering' AND b.course_id = 'CS 160' CREATE (a)-[:IS_COVERED_BY]->(b);
+MATCH (a:Domain), (b:Course) WHERE a.topic = 'Software Engineering' AND b.course_id = 'CS 161' CREATE (a)-[:IS_COVERED_BY]->(b);
 MATCH (a:Domain), (b:Course) WHERE a.topic = 'Information Security' AND b.course_id = 'CS 166' CREATE (a)-[:IS_COVERED_BY]->(b);
-MATCH (a:Domain), (b:Course) WHERE a.topic = 'Computer Vision' AND b.course_id = 'CS 136' CREATE (a)-[:IS_COVERED_BY]->(b);
 MATCH (a:Domain), (b:Course) WHERE a.topic = 'Blockchain' AND b.course_id = 'CS 168' CREATE (a)-[:IS_COVERED_BY]->(b);
 MATCH (a:Domain), (b:Course) WHERE a.topic = 'Machine Learning' AND b.course_id = 'CS 171' CREATE (a)-[:IS_COVERED_BY]->(b);
+MATCH (a:Domain), (b:Course) WHERE a.topic = 'Server-side Web Programming' AND b.course_id = 'CS 174' CREATE (a)-[:IS_COVERED_BY]->(b);
 MATCH (a:Domain), (b:Course) WHERE a.topic = 'Mobile Device Development' AND b.course_id = 'CS 175' CREATE (a)-[:IS_COVERED_BY]->(b);
-
-
+MATCH (a:Domain), (b:Course) WHERE a.topic = 'Social Network Analysis' AND b.course_id = 'CS 176' CREATE (a)-[:IS_COVERED_BY]->(b);
 
 
 
@@ -146,5 +172,7 @@ MATCH (a:Faculty), (b:Course) WHERE a.name = 'David Taylor' AND b.course_id = 'C
 MATCH (a:Faculty), (b:Course) WHERE a.name = 'Katerina Potika' AND b.course_id = 'CS 146' CREATE (a)-[:TEACHES]->(b);
 MATCH (a:Faculty), (b:Course) WHERE a.name = 'Navrati Saxena' AND b.course_id = 'CS 146' CREATE (a)-[:TEACHES]->(b);
 MATCH (a:Faculty), (b:Course) WHERE a.name = 'Nada Attar' AND b.course_id = 'CS 146' CREATE (a)-[:TEACHES]->(b);
+
+
 
 
