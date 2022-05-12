@@ -18,13 +18,18 @@ public class HomeController {
     // https://stackoverflow.com/questions/38221461/how-to-make-an-html-file-appear-on-localhost-with-spring-boot
     @GetMapping("/")
     public String homePage() {
-    	return "login";
+    	return "index";
     }
     
     @GetMapping("/login")
     public String login() {
         return "login";
     }
+    
+    @GetMapping("/signup")
+	public String signup() {
+		return "signup";
+	}
 
     @GetMapping("/home/{username}")
     public String home(@PathVariable(value = "username") String name) {

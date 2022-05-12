@@ -45,22 +45,21 @@
     </style>
 </head>
 <body>
-<div style="text-align: center;"> <h1> Sign-up </h1> </div>
+<div style="text-align: center;"> <h1>Sign Up</h1></div>
 <form>
     <div class="container">
-        <label>Username : </label>
+        <label>Username: </label>
         <input type="text" id="username" placeholder="Enter Username" name="username" required>
-        <label>Password : </label>
+        <label>Password: </label>
         <input type="password" id="pwd" placeholder="Enter Password" name="password" required>
-        <label>Confirme Password : </label>
+        <label>Confirm Password: </label>
         <input type="password" id="conpwd" placeholder="Re-Enter Password" name="password" required>
-        <button type="submit"><a target="_blank" href="" onclick="location.reload();location.href='/v1/home/'+document.getElementById('username').value" type="submit">Sign-up</a></button>
+        <button type="submit"><a target="_blank" href="" onclick="location.reload();location.href='/v1/home/'+document.getElementById('username').value" type="submit">Sign Up</a></button>
 
         <input type="radio" id="student" name="role" value="student">
         <label for="student">Student</label><br>
         <input type="radio" id="faculty" name="role" value="faculty">
-        <label for="faculty">faculty</label><br>
-
+        <label for="faculty">Faculty</label><br>
 
         <button type="button" class="cancelbtn"> login</button>
 

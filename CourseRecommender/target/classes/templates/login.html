@@ -48,11 +48,11 @@
 <div style="text-align: center;"> <h1> Login Form </h1> </div>
 <form>
     <div class="container">
-        <label>Username : </label>
+        <label>Username: </label>
         <input type="text" id="username" placeholder="Enter Username" name="username" required>
-        <label>Password : </label>
+        <label>Password: </label>
         <input type="password" id="pwd" placeholder="Enter Password" name="password" required>
-        <button type="submit"><a target="_blank" href="" onclick="location.reload();location.href='/v1/home/'+document.getElementById('username').value" type="submit">Login</a></button>
+        <button type="submit"><a target="_blank" href="" onclick="login()" type="submit">Login</a></button>
         <input type="checkbox" checked="checked"> Remember me
 
         <button type="button" class="cancelbtn"> Cancel</button>
