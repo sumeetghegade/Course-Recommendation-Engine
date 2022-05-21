@@ -13,6 +13,7 @@ import com.vaadin.flow.component.applayout.AppLayout;
 import com.vaadin.flow.component.applayout.DrawerToggle;
 import com.vaadin.flow.component.avatar.Avatar;
 import com.vaadin.flow.component.button.Button;
+import com.vaadin.flow.component.dependency.CssImport;
 import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.orderedlayout.FlexComponent;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
@@ -23,6 +24,7 @@ import com.vaadin.flow.router.RouterLink;
 
 import javax.annotation.security.PermitAll;
 
+@CssImport("./styles/header.css")
 @Route(value = "")
 @PermitAll
 public class MainLayout extends AppLayout {
@@ -41,18 +43,20 @@ public class MainLayout extends AppLayout {
         Avatar av = new Avatar(username);
         H1 logo = new H1();
         if (role.equals("Faculty")) {
-            logo.setText("Welcome, Prof. " + username);
+            logo.setText("Welcome, Prof. " + username+ "!");
         } else {
-            logo.setText("Welcome, " + username);
+            logo.setText("Welcome, " + username + "!");
         }
         logo.addClassNames("text-l", "m-m");
         Button logout = new Button("Log out", e -> securityService.logout());
+        logout.addClassName("logout-button");
         DrawerToggle dw = new DrawerToggle();
+        dw.addClassName("toggle");
+        
         HorizontalLayout header = new HorizontalLayout(
                 dw,
                 logo,
                 logout
-
         );
 
         header.setDefaultVerticalComponentAlignment(FlexComponent.Alignment.CENTER);
@@ -104,7 +108,7 @@ public class MainLayout extends AppLayout {
 
         if (securityService.getAuthenticatedUser().getUser().getRole().equals("Faculty")) {
 
-            RouterLink listLink1 = new RouterLink("MyCourses", FacultyCoursesListView.class);
+            RouterLink listLink1 = new RouterLink("My Courses", FacultyCoursesListView.class);
             listLink1.setHighlightCondition(HighlightConditions.sameLocation());
 
 
