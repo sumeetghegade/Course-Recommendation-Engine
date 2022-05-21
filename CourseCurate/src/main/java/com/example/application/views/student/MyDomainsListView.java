@@ -9,6 +9,7 @@ import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.ComponentEvent;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.grid.Grid;
+import com.vaadin.flow.component.html.H6;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.TextField;
@@ -60,12 +61,31 @@ public class MyDomainsListView extends VerticalLayout {
     }
 
     private Component getContent() {
-        HorizontalLayout content = new HorizontalLayout(grid, form);
-        content.setFlexGrow(2, grid);
-        content.setFlexGrow(1, form);
+    	
+    	H6 gridTitle = new H6("Your Selected Domains");
+    	gridTitle.getStyle().set("margin-top", "0");
+    	
+    	H6 formTitle = new H6("All Domains");
+    	formTitle.getStyle().set("margin-top", "0");
+    	
+    	// https://stackoverflow.com/questions/55735600/vaadin-13-flex-grow -- for sizing
+    	VerticalLayout gridWithTitle = new VerticalLayout(gridTitle, grid);
+    	gridWithTitle.setWidth(null);
+    	gridWithTitle.setPadding(false);
+    	gridWithTitle.setMargin(false);
+    	
+    	VerticalLayout formWithTitle = new VerticalLayout(formTitle, form);
+    	formWithTitle.setWidth(null);
+    	formWithTitle.setPadding(false);
+    	formWithTitle.setMargin(false);
+    	
+    	HorizontalLayout content = new HorizontalLayout(gridWithTitle, formWithTitle);
+        content.setFlexGrow(2.0, gridWithTitle);
+        content.setFlexGrow(0, formWithTitle);
         content.addClassName("content");
         content.setSizeFull();
-
+        content.setMargin(false);
+        
         return content;
     }
 
@@ -98,7 +118,6 @@ public class MyDomainsListView extends VerticalLayout {
         grid.setSizeFull();
         grid.setColumns("id", "name");
         grid.getColumns().forEach(col -> col.setAutoWidth(true));
-
     }
 
 }

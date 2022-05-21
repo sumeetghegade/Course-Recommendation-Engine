@@ -13,6 +13,7 @@ import com.vaadin.flow.component.grid.Grid;
 import com.vaadin.flow.component.grid.HeaderRow;
 import com.vaadin.flow.component.html.H1;
 import com.vaadin.flow.component.html.H4;
+import com.vaadin.flow.component.html.H6;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.TextField;
@@ -24,7 +25,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import javax.annotation.security.PermitAll;
 
 @Route(value = "myRecommendedCourses", layout = MainLayout.class)
-@PageTitle("Recommended Courses | Course Recommender")
+@PageTitle("Recommended Courses | Course Curate")
 @PermitAll
 public class MyRecommendedCoursesListView extends VerticalLayout {
 
@@ -64,16 +65,37 @@ public class MyRecommendedCoursesListView extends VerticalLayout {
         grid.setItems(studentService.getAllCourses(securityService.getAuthenticatedUser().getUser().getId()));
     }
 
+    // combine grid and form into a horizontal layout to display to users
     private Component getContent() {
-        HorizontalLayout content = new HorizontalLayout(grid, form);
-        content.setFlexGrow(2, grid);
-        content.setFlexGrow(1, form);
+        
+    	H6 gridTitle = new H6("Your Selected Courses");
+    	gridTitle.getStyle().set("margin-top", "0");
+    	
+    	H6 formTitle = new H6("Recommended Courses");
+    	formTitle.getStyle().set("margin-top", "0");
+    	
+    	// https://stackoverflow.com/questions/55735600/vaadin-13-flex-grow -- for sizing
+    	VerticalLayout gridWithTitle = new VerticalLayout(gridTitle, grid);
+    	gridWithTitle.setWidth(null);
+    	gridWithTitle.setPadding(false);
+    	gridWithTitle.setMargin(false);
+    	
+    	VerticalLayout formWithTitle = new VerticalLayout(formTitle, form);
+    	formWithTitle.setWidth(null);
+    	formWithTitle.setPadding(false);
+    	formWithTitle.setMargin(false);
+    	
+    	HorizontalLayout content = new HorizontalLayout(gridWithTitle, formWithTitle);
+        content.setFlexGrow(2.0, gridWithTitle);
+        content.setFlexGrow(0, formWithTitle);
         content.addClassName("content");
         content.setSizeFull();
-
+        content.setMargin(false);
+        
         return content;
     }
 
+    // create the form for adding domains
     private void configureForm() {
         form = new MyRecommendedCourseForm(studentService, securityService, courseService);
         form.setWidth("25em");
@@ -98,12 +120,12 @@ public class MyRecommendedCoursesListView extends VerticalLayout {
         return toolbar;
     }
 
+    // create the main middle section of user's selected courses
     private void configureGrid() {
         grid.addClassNames("list-grid");
         grid.setSizeFull();
         grid.setColumns("id", "name");
         grid.getColumns().forEach(col -> col.setAutoWidth(true));
-        grid.getColumnByKey("id").setHeader("Favourited Domains");
     }
 
 }
