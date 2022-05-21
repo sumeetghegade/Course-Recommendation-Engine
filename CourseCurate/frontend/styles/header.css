@@ -11,6 +11,10 @@
 	color: white;
 }
 
+.logout-button:hover {
+	background-color: #c4901f;
+}
+
 .toggle {
 	color: #E5A823;
 }

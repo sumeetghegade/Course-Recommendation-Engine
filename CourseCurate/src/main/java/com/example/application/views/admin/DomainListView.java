@@ -109,7 +109,7 @@ public class DomainListView extends VerticalLayout {
         filterText.setValueChangeMode(ValueChangeMode.LAZY);
         filterText.addValueChangeListener(e -> updateList());
 
-        Button addDomainButton = new Button("Add Domain");
+        Button addDomainButton = new Button("Add domain");
         addDomainButton.addClickListener(e -> addDomain());
         HorizontalLayout toolbar = new HorizontalLayout(filterText, addDomainButton);
         toolbar.addClassName("toolbar");

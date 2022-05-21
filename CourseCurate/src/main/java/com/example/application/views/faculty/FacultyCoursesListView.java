@@ -11,6 +11,7 @@ import com.example.application.views.student.MyCoursesForm;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.grid.Grid;
+import com.vaadin.flow.component.html.H6;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.TextField;
@@ -59,11 +60,13 @@ public class FacultyCoursesListView extends VerticalLayout {
     }
 
     private Component getContent() {
-        HorizontalLayout content = new HorizontalLayout(grid);
-        content.setFlexGrow(2, grid);
-        //content.setFlexGrow(1, form);
-        content.addClassName("content");
+    	
+    	H6 header = new H6("Your Courses");
+    	header.getStyle().set("margin-top", "0");
+        VerticalLayout content = new VerticalLayout(header, grid);
         content.setSizeFull();
+        content.setPadding(false);
+    	content.setMargin(false);
 
         return content;
     }
