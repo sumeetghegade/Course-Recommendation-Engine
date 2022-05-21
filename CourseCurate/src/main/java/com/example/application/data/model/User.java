@@ -5,6 +5,7 @@ import org.springframework.data.neo4j.core.schema.GeneratedValue;
 import org.springframework.data.neo4j.core.schema.Id;
 import org.springframework.data.neo4j.core.schema.Node;
 import org.springframework.data.neo4j.core.schema.Relationship;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import java.util.Set;
 
@@ -25,15 +26,18 @@ public class User {
     private String emailID;
     private String role;
     public User(Set<Domain> domain, Set<Course> course, Set<Course> facultyCourse, Long id, String name, String password, String emailID, String role) {
-        this.domain = domain;
+    	
+    	this.domain = domain;
         this.course = course;
         this.facultyCourse = facultyCourse;
         this.id = id;
         this.name = name;
-        this.password = password;
+        this.password = new BCryptPasswordEncoder().encode(password); // previously just "this.password = password;"
         this.emailID = emailID;
         this.role = role;
+        
     }
+    
     public User() {
     }
 
@@ -93,7 +97,7 @@ public class User {
     }
 
     public void setPassword(String password) {
-        this.password = password;
+        this.password = new BCryptPasswordEncoder().encode(password);
     }
 
     public String getEmailID() {

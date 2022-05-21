@@ -18,7 +18,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import javax.annotation.security.PermitAll;
 
 @Route(value = "course", layout = MainLayout.class)
-@PageTitle("Courses | Course Recommender")
+@PageTitle("Courses | Course Curate")
 @PermitAll
 public class CourseListView extends VerticalLayout {
     Grid<Course> grid = new Grid<>(Course.class);

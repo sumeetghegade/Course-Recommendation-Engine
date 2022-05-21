@@ -10,6 +10,9 @@ import com.example.application.views.MainLayout;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.button.Button;
 import com.vaadin.flow.component.grid.Grid;
+import com.vaadin.flow.component.grid.HeaderRow;
+import com.vaadin.flow.component.html.H1;
+import com.vaadin.flow.component.html.H4;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.TextField;
@@ -48,7 +51,7 @@ public class MyRecommendedCoursesListView extends VerticalLayout {
 
         configureGrid();
         configureForm();
-
+        
         add(
                 getContent()
         );
@@ -100,7 +103,7 @@ public class MyRecommendedCoursesListView extends VerticalLayout {
         grid.setSizeFull();
         grid.setColumns("id", "name");
         grid.getColumns().forEach(col -> col.setAutoWidth(true));
-
+        grid.getColumnByKey("id").setHeader("Favourited Domains");
     }
 
 }
