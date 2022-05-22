@@ -7,6 +7,7 @@ import com.example.application.data.service.FacultyService;
 import com.example.application.data.service.StudentService;
 import com.example.application.security.SecurityService;
 import com.example.application.views.MainLayout;
+import com.example.application.views.admin.CourseForm;
 import com.example.application.views.student.MyCoursesForm;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.button.Button;
@@ -23,13 +24,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import javax.annotation.security.PermitAll;
 
 @Route(value = "FacultyCourses", layout = MainLayout.class)
-@PageTitle("My Courses | Course Recommender")
+@PageTitle("My Courses | Course Curate")
 @PermitAll
 public class FacultyCoursesListView extends VerticalLayout {
 
     Grid<Course> grid = new Grid<>(Course.class);
     TextField filterText = new TextField();
-    MyCoursesForm form;
+    FacultyCourseForm form;
     @Autowired
     private CourseService courseService;
     @Autowired
@@ -45,10 +46,10 @@ public class FacultyCoursesListView extends VerticalLayout {
         setSizeFull();
 
         configureGrid();
-        //configureForm();
+        configureForm();
 
         add(
-                getContent()
+                getToolBar(), getContent()
         );
 
         updateList();
@@ -71,25 +72,59 @@ public class FacultyCoursesListView extends VerticalLayout {
         return content;
     }
 
-    private void configureForm() {
-        //form = new MyCoursesForm(courseService.findAllCourses(null), facultyService, securityService);
-        form.setWidth("25em");
-
-        form.addListener(MyCoursesForm.SaveEvent.class, this::saveUser);
+    private void closeEditor() {
+        form.setCourse(null);
+        form.setVisible(false);
+        removeClassName("editing");
     }
-
-    private void saveUser(MyCoursesForm.SaveEvent event) {
+    
+    private void saveCourse(FacultyCourseForm.SaveEvent event) {
+        courseService.saveCourse(event.getCourse());
         updateList();
+        closeEditor();
     }
 
+    private void deleteCourse(FacultyCourseForm.DeleteEvent event) {
+        courseService.deleteContact(event.getCourse());
+        updateList();
+        closeEditor();
+    }
+    
+    private void editCourse(Course value) {
+        if(value == null) {
+            closeEditor();
+        }
+        else {
+            form.setCourse(value);
+            form.setVisible(true);
+            addClassName("editing");
+        }
+    }
+    
+    private void configureForm() {
+        form = new FacultyCourseForm(facultyService.findAllFaculty(securityService.getAuthenticatedUser().getUser().getName()));
+        form.setWidth("25em");
+        
+        System.out.println("Check in configureform() -- " + facultyService.findAllFaculty(securityService.getAuthenticatedUser().getUser().getName()));
 
+        form.addListener(FacultyCourseForm.SaveEvent.class, this::saveCourse);
+        form.addListener(FacultyCourseForm.DeleteEvent.class, this::deleteCourse);
+        form.addListener(FacultyCourseForm.CloseEvent.class, e -> closeEditor());
+    }
+    
+    private void addContact() {
+        grid.asSingleSelect().clear();
+        editCourse(new Course());
+    }
+    
     private Component getToolBar() {
-        filterText.setPlaceholder("Filter by name...");
+    	filterText.setPlaceholder("Filter by name...");
         filterText.setClearButtonVisible(true);
         filterText.setValueChangeMode(ValueChangeMode.LAZY);
+        filterText.addValueChangeListener(e -> updateList());
 
         Button addContactButton = new Button("Add course");
-
+        addContactButton.addClickListener(e -> addContact());
         HorizontalLayout toolbar = new HorizontalLayout(filterText, addContactButton);
         toolbar.addClassName("toolbar");
         return toolbar;

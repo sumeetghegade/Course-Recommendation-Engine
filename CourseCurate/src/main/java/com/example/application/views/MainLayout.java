@@ -19,6 +19,7 @@ import com.vaadin.flow.component.orderedlayout.FlexComponent;
 import com.vaadin.flow.component.orderedlayout.HorizontalLayout;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.router.HighlightConditions;
+import com.vaadin.flow.router.PageTitle;
 import com.vaadin.flow.router.Route;
 import com.vaadin.flow.router.RouterLink;
 
@@ -26,6 +27,7 @@ import javax.annotation.security.PermitAll;
 
 @CssImport("./styles/header.css")
 @Route(value = "")
+@PageTitle("Course Curate")
 @PermitAll
 public class MainLayout extends AppLayout {
 
