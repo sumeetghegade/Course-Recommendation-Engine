@@ -4,6 +4,7 @@ import com.example.application.data.service.CourseService;
 import com.example.application.views.MainLayout;
 import com.vaadin.flow.component.Component;
 import com.vaadin.flow.component.button.Button;
+import com.vaadin.flow.component.grid.GridVariant;
 import com.vaadin.flow.component.orderedlayout.VerticalLayout;
 import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.router.PageTitle;
@@ -90,6 +91,8 @@ public class CourseListView extends VerticalLayout {
         grid.getColumns().forEach(col -> col.setAutoWidth(true));
 
         grid.asSingleSelect().addValueChangeListener(e -> editCourse(e.getValue()));
+
+        grid.addThemeVariants(GridVariant.LUMO_ROW_STRIPES);
     }
 
     private void editCourse(Course value) {
