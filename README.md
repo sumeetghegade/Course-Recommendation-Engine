@@ -25,6 +25,7 @@ Students can choose their domains of interest from a list of available domains:
 <br/>
 Based on the selected domains students will get the recommendations as follows:
 ![select domains](https://github.com/sumeetghegade/CS157C-team02/blob/main/images/Recommendations.png?raw=true)
+<br/>
 Query used to get recommendations:
 ![query](https://github.com/sumeetghegade/CS157C-team02/blob/main/images/Query.png?raw=true)
 
