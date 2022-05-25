@@ -1,2 +1,3 @@
-# CS157C-team02
+# Course Curate
 CS157C-NoSQL: Team 02 
+
