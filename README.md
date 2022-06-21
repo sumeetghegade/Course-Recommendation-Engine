@@ -1,5 +1,4 @@
 # Course Curate
-CS157C-NoSQL: Team 02 
 
 ## Introduction
 In this project, a recommendation engine has been proposed which can be used by university students to get course recommendations based on common interests with previously enrolled students. We have used the Neo4j Graph Database to store data and generate recommendations. 
